@@ -21,6 +21,10 @@ var app = {
         $('#data').html($img);
     },
 
+    onPhotoDataSuccess2: function(imageData) {
+        app.log('onPhotoDataSuccess2');
+    },
+
     // Called when a photo is successfully retrieved
     onPhotoURISuccess: function(imageURI) {
         app.log('onPhotoURISuccess');
@@ -37,7 +41,25 @@ var app = {
         // Take picture using device camera and retrieve image as base64-encoded string
         navigator.camera.getPicture(this.onPhotoDataSuccess, this.onFail, {
             quality: 50,
-            destinationType: this.destinationType.FILE_URI
+            destinationType: this.destinationType.DATA_URL
+        });
+    },
+
+    capturePhoto2: function() {
+        this.log('capturePhoto2');
+        // Take picture using device camera and retrieve image as base64-encoded string
+        navigator.camera.getPicture(this.onPhotoDataSuccess2, this.onFail, {
+            quality: 50,
+            destinationType: this.destinationType.DATA_URL
+        });
+    },
+
+    capturePhoto3: function() {
+        this.log('capturePhoto3');
+        // Take picture using device camera and retrieve image as base64-encoded string
+        navigator.camera.getPicture(this.onPhotoDataSuccess, this.onFail, {
+            quality: 50,
+            destinationType: this.destinationType.FILE_URL
         });
     },
 
@@ -46,7 +68,8 @@ var app = {
         this.log('capturePhotoEdit');
         // Take picture using device camera, allow edit, and retrieve image as base64-encoded string
         navigator.camera.getPicture(this.onPhotoDataSuccess, this.onFail, {
-            quality: 20, allowEdit: true,
+            quality: 20,
+            allowEdit: true,
             destinationType: this.destinationType.DATA_URL
         });
     },
@@ -66,9 +89,9 @@ var app = {
     getPhotoAlbum: function() {
         this.log('getPhotoAlbum');
         // Retrieve image file location from specified source
-        navigator.camera.getPicture(this.onPhotoURISuccess, this.onFail, {
+        navigator.camera.getPicture(this.onPhotoDataSuccess, this.onFail, {
             quality: 50,
-            destinationType: this.destinationType.FILE_URI,
+            destinationType: this.destinationType.DATA_URL,
             sourceType: this.pictureSource.SAVEDPHOTOALBUM
         });
     },
