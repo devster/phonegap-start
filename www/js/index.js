@@ -37,7 +37,7 @@ var app = {
         // Take picture using device camera and retrieve image as base64-encoded string
         navigator.camera.getPicture(this.onPhotoDataSuccess, this.onFail, {
             quality: 50,
-            destinationType: this.destinationType.DATA_URL
+            destinationType: this.destinationType.FILE_URI
         });
     },
 
