@@ -14,7 +14,7 @@ var app = {
     // Called when a photo is successfully retrieved
     onPhotoDataSuccess: function(imageData) {
         this.log('onPhotoDataSuccess');
-        var $img = $('img', {id: 'photo'});
+        var $img = $('<img>', {id: 'photo'});
 
         $img.attr('src', "data:image/jpeg;base64," + imageData);
 
@@ -24,7 +24,7 @@ var app = {
     // Called when a photo is successfully retrieved
     onPhotoURISuccess: function(imageURI) {
         this.log('onPhotoURISuccess');
-        var $img = $('img', {id: 'photo'});
+        var $img = $('<img>', {id: 'photo'});
 
         $img.attr('src', imageURI);
 
