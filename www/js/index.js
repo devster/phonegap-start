@@ -21,10 +21,6 @@ var app = {
         $('#data').html($img);
     },
 
-    onPhotoDataSuccess2: function(imageData) {
-        app.log('onPhotoDataSuccess2');
-    },
-
     // Called when a photo is successfully retrieved
     onPhotoURISuccess: function(imageURI) {
         app.log('onPhotoURISuccess');
@@ -37,27 +33,19 @@ var app = {
 
     // A button will call this function
     capturePhoto: function() {
-        this.log('capturePhoto');
+        this.log('capturePhoto DATA_URL');
         // Take picture using device camera and retrieve image as base64-encoded string
         navigator.camera.getPicture(this.onPhotoDataSuccess, this.onFail, {
             quality: 50,
+            correctOrientation: true,
             destinationType: this.destinationType.DATA_URL
         });
     },
 
     capturePhoto2: function() {
-        this.log('capturePhoto2');
+        this.log('capturePhoto FILE_URL');
         // Take picture using device camera and retrieve image as base64-encoded string
-        navigator.camera.getPicture(this.onPhotoDataSuccess2, this.onFail, {
-            quality: 50,
-            destinationType: this.destinationType.DATA_URL
-        });
-    },
-
-    capturePhoto3: function() {
-        this.log('capturePhoto3');
-        // Take picture using device camera and retrieve image as base64-encoded string
-        navigator.camera.getPicture(this.onPhotoDataSuccess, this.onFail, {
+        navigator.camera.getPicture(this.onPhotoURISuccess, this.onFail, {
             quality: 50,
             destinationType: this.destinationType.FILE_URL
         });
