@@ -47,6 +47,7 @@ var app = {
         // Take picture using device camera and retrieve image as base64-encoded string
         navigator.camera.getPicture(this.onPhotoURISuccess, this.onFail, {
             quality: 50,
+            correctOrientation: true,
             destinationType: this.destinationType.FILE_URL
         });
     },
@@ -58,6 +59,7 @@ var app = {
         navigator.camera.getPicture(this.onPhotoDataSuccess, this.onFail, {
             quality: 20,
             allowEdit: true,
+            correctOrientation: true,
             destinationType: this.destinationType.DATA_URL
         });
     },
@@ -68,6 +70,7 @@ var app = {
         // Retrieve image file location from specified source
         navigator.camera.getPicture(this.onPhotoURISuccess, this.onFail, {
             quality: 50,
+            correctOrientation: true,
             destinationType: this.destinationType.FILE_URI,
             sourceType: this.pictureSource.PHOTOLIBRARY
         });
@@ -79,6 +82,7 @@ var app = {
         // Retrieve image file location from specified source
         navigator.camera.getPicture(this.onPhotoDataSuccess, this.onFail, {
             quality: 50,
+            correctOrientation: true,
             destinationType: this.destinationType.DATA_URL,
             sourceType: this.pictureSource.SAVEDPHOTOALBUM
         });
